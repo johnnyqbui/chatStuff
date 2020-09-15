@@ -10,8 +10,8 @@ export default DialogBox = ({
 }) => {
   return (
     <ScrollView ref={scrollRef} style={styles.scrollContainer}>
-      {dialogs.map(({id, user, text}) => (
-        <View key={id} style={styles.dialogContainer}>
+      {dialogs.map(({user, text}, idx) => (
+        <View key={idx} style={styles.dialogContainer}>
           <Text
             style={{
               ...styles.text,
