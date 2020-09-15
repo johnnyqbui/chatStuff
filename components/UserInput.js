@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Input} from 'react-native-elements';
 
-const UserInput = onPressSubmit => {
+const UserInput = props => {
+  const {onPressSubmit} = props;
   const [value, onChangeText] = useState('');
 
   return (
@@ -12,12 +14,14 @@ const UserInput = onPressSubmit => {
       onChangeText={text => onChangeText(text)}
       value={value}
       rightIcon={
-        <Icon
-          name="user"
-          size={24}
-          color="black"
-          onPress={() => onPressSubmit(value)}
-        />
+        <Text
+          onPress={() => {
+            if (props.disable) return;
+            onPressSubmit(value);
+            onChangeText('');
+          }}>
+          Send
+        </Text>
       }
     />
   );
