@@ -34,9 +34,10 @@ export default ChatBox = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      scrollRef.current.scrollToEnd();
-    }, 100);
+    (loadingMessage || dialogs.length) &&
+      setTimeout(() => {
+        scrollRef.current.scrollToEnd();
+      }, 100);
   }, [dialogs, loadingMessage]);
 
   const onPressSubmit = text => {
